@@ -1,5 +1,5 @@
 {
-  "name": "@gnus-ai/hardhat-diamonds",
+  "name": "@gnus.ai/hardhat-diamonds",
   "version": "0.0.1",
   "description": "Tools for deploying and interfacing with ERC-2535 Diamond Proxies",
   "main": "dist/src/index.js",

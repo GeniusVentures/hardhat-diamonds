@@ -10,6 +10,7 @@
     "rootDirs": ["./src", "./test"],
     "esModuleInterop": true
   },
+  // "files": ["./hardhat.config.ts"],
   "exclude": ["dist", "node_modules"],
   "include": [
     "./test",
