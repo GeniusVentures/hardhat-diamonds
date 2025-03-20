@@ -29,7 +29,7 @@
     "test": "mocha --exit --recursive 'test/**/*.test.ts'"
   },
   "files": [
-    "dist/src/",
+    "dist/",
     "src/",
     "LICENSE",
     "README.md"
@@ -42,7 +42,6 @@
     "@openzeppelin/defender-admin-client": "^1.54.1",
     "@openzeppelin/defender-base-client": "^1.54.1",
     "@typechain/ethers-v5": "^9.0.0",
-    "@typechain/hardhat": "^4.0.0",
     "@types/chai": "^4.3.0",
     "@types/chai-as-promised": "^7.1.5",
     "@types/debug": "^4.1.7",
@@ -69,7 +68,6 @@
     "ethers": "^5.5.4",
     "hardhat": "^2.9.0",
     "hardhat-abi-exporter": "^2.8.0",
-    "hardhat-diamond-abi": "git+https://github.com/Am0rfu5/hardhat-diamond-abi.git",
     "hardhat-gas-reporter": "^1.0.8",
     "hardhat-multichain": "git+https://github.com/GeniusVentures/hardhat-multchain.git",
     "mocha": "^7.1.2",
@@ -77,21 +75,18 @@
     "prettier-plugin-solidity": "^1.0.0-beta.19",
     "solhint": "^3.3.7",
     "solidity-coverage": "^0.8.14",
+    "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typechain": "^7.0.0",
     "typescript": "^4.5.5",
-    "uint32": "^0.2.1",
-    "ts-node": "^8.1.0"
+    "uint32": "^0.2.1"
   },
   "peerDependencies": {
-    "hardhat": "^2.0.0",
     "ethers": "^5.0.0",
-    "typescript": "^4.0.0",
-    "ts-node": "^8.0.0",
-    "typechain": "^7.0.0",
+    "hardhat": "^2.0.0",
     "hardhat-multichain": "git+https://github.com/GeniusVentures/hardhat-multchain.git",
-    "hardhat-diamond-abi": "git+https://github.com/Am0rfu5/hardhat-diamond-abi.git"
+    "ts-node": "^8.0.0",
+    "typescript": "^4.0.0"
   }
 }

@@ -15,5 +15,5 @@
   "include": [
     "./test",
     "./src"
-  ]
+, "../diamonds/src/types", "../diamonds/src/internal"  ]
 }
