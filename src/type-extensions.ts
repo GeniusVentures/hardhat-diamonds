@@ -4,7 +4,6 @@ import { HardhatRuntimeEnvironmentFields } from "./HardhatRuntimeEnvironmentFiel
 
 declare module "hardhat/types/config" {
   export interface HardhatUserConfig {
-    // Use "diamonds" as the config key
     diamonds?: DiamondsUserConfig;
   }
 
@@ -13,12 +12,11 @@ declare module "hardhat/types/config" {
   }
 }
 
-declare module "hardhat/types/runtime" {
-  export interface HardhatRuntimeEnvironment {
-    // Expose our plugin helper on hre as "diamonds"
-    diamonds: HardhatRuntimeEnvironmentFields;
-  }
-}
+// declare module "hardhat/types/runtime" {
+//   export interface HardhatRuntimeEnvironment {
+//     diamonds: HardhatRuntimeEnvironmentFields;
+//   }
+// }
 
 export interface DiamondConfig {
   path?: string;
@@ -28,10 +26,6 @@ export interface DiamondConfig {
   exclude?: string[];
 }
 
-/**
- * The diamonds configuration should be a record where each key is a diamond name
- * and the value is its configuration.
- */
 export interface DiamondsUserConfig {
   [diamondName: string]: DiamondConfig;
 }

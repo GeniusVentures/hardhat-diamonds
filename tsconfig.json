@@ -1,19 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2018",
     "module": "commonjs",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "dist",
     "strict": true,
     "rootDirs": ["./src", "./test"],
     "esModuleInterop": true
   },
-  // "files": ["./hardhat.config.ts"],
   "exclude": ["dist", "node_modules"],
   "include": [
-    "./test",
-    "./src"
-, "../diamonds/src/types", "../diamonds/src/internal"  ]
+    "./src"]
 }
