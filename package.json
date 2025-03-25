@@ -42,7 +42,7 @@
     "chai": "^4.2.0",
     "hardhat": "^2.0.0",
     "mocha": "^7.1.2",
-    "prettier": "2.0.5",
+    "prettier": "^3.5.3",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
@@ -51,6 +51,5 @@
   },
   "peerDependencies": {
     "hardhat": "^2.0.0"
-    
   }
 }
