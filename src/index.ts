@@ -7,11 +7,20 @@ import { HardhatRuntimeEnvironmentFields } from "./HardhatRuntimeEnvironmentFiel
 extendConfig((config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
   // Set default diamonds config to an empty object if not provided
   console.log('diamonds config:', userConfig.diamonds);
-  const defaultDiamondsConfig: DiamondsUserConfig = {};
-  config.diamonds = userConfig.diamonds ?? defaultDiamondsConfig;
+  const defaultDiamondsConfig: DiamondsUserConfig = {
+    // Default values for diamonds config
+    diamonds: {}
+  };
+  config.diamonds = {
+    ...defaultDiamondsConfig,
+    ...userConfig.diamonds,
+  };
 });
 
-// extendEnvironment((hre) => {
-//   // Attach our helper to the runtime environment under hre.diamonds.
-//   hre.diamonds = lazyObject(() => new HardhatRuntimeEnvironmentFields(hre));
-// });
+extendEnvironment((hre) => {
+  // Attach our helper to the runtime environment under hre.diamonds.
+  hre.diamonds = lazyObject(() => new HardhatRuntimeEnvironmentFields(hre));
+});
+
+export { DiamondsUserConfig, DiamondConfig } from "./type-extensions";
+export { };

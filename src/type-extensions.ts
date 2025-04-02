@@ -12,18 +12,16 @@ declare module "hardhat/types/config" {
   }
 }
 
-// declare module "hardhat/types/runtime" {
-//   export interface HardhatRuntimeEnvironment {
-//     diamonds: HardhatRuntimeEnvironmentFields;
-//   }
-// }
+declare module "hardhat/types/runtime" {
+  export interface HardhatRuntimeEnvironment {
+    diamonds: HardhatRuntimeEnvironmentFields;
+  }
+}
 
 export interface DiamondConfig {
-  path?: string;
-  deployments_path?: string;
-  facets_path?: string;
-  include?: string[];
-  exclude?: string[];
+  contractsPath?: string;
+  deploymentsPath?: string;
+  callbacksPath?: string;
 }
 
 export interface DiamondsUserConfig {

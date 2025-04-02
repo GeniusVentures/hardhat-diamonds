@@ -3,12 +3,7 @@
   "version": "0.0.1",
   "description": "Tools for deploying and interfacing with ERC-2535 Diamond Proxies",
   "main": "dist/index.js",
-  "authors": [
-    "SuperGenius",
-    "Am0rfu5"
-  ],
-  "license": "MIT",
-  "types": "dist/src/index.d.ts",
+  "types": "dist/index.d.ts",
   "keywords": [
     "ethereum",
     "smart-contracts",
@@ -19,6 +14,10 @@
     "diamond-upgradeable",
     "blockchain"
   ],
+  "authors": [
+    "Am0rfu5"
+  ],
+  "license": "MIT",
   "repository": "github:GeniusVentures/hardhat-diamonds",
   "scripts": {
     "lint:fix": "prettier --write 'src/**/*.{js,ts}' 'test/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json",
