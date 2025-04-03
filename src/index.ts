@@ -1,15 +1,15 @@
 import { extendConfig, extendEnvironment } from "hardhat/config";
 import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
 import { lazyObject } from "hardhat/plugins";
-import { DiamondsUserConfig } from "./type-extensions";
-import { HardhatRuntimeEnvironmentFields } from "./HardhatRuntimeEnvironmentFields";
+import { DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondsConfig } from "./DiamondsConfig";
 
 extendConfig((config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
   // Set default diamonds config to an empty object if not provided
   console.log('diamonds config:', userConfig.diamonds);
-  const defaultDiamondsConfig: DiamondsUserConfig = {
+  const defaultDiamondsConfig: DiamondsPathsConfig = {
     // Default values for diamonds config
-    diamonds: {}
+    paths: {}
   };
   config.diamonds = {
     ...defaultDiamondsConfig,
@@ -19,8 +19,7 @@ extendConfig((config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) =>
 
 extendEnvironment((hre) => {
   // Attach our helper to the runtime environment under hre.diamonds.
-  hre.diamonds = lazyObject(() => new HardhatRuntimeEnvironmentFields(hre));
+  hre.diamonds = lazyObject(() => new DiamondsConfig(hre));
 });
 
-export { DiamondsUserConfig, DiamondConfig } from "./type-extensions";
-export { };
+export { default as DiamondsConfig } from "./DiamondsConfig";

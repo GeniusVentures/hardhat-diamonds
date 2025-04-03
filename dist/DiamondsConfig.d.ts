@@ -15,6 +15,6 @@ export declare class DiamondsConfig {
      * Get the configuration for a specific diamond by name.
      * @param diamondName - The name of the diamond.
      */
-    getDiamondConfig(diamondName: string): import("@gnus.ai/diamonds").DiamondPathsConfig;
+    getDiamondConfig(diamondName: string): any;
 }
-//# sourceMappingURL=HardhatRuntimeEnvironmentFields.d.ts.map
+//# sourceMappingURL=DiamondsConfig.d.ts.map

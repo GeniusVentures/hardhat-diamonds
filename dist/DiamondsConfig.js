@@ -7,7 +7,7 @@ exports.DiamondsConfig = void 0;
 class DiamondsConfig {
     constructor(hre) {
         this.hre = hre;
-        this.diamondsConfig = this.hre.config.diamonds;
+        this.diamondsConfig = this.hre.config.diamondsConfig;
     }
     /**
      * Get the diamonds configuration.
@@ -28,4 +28,4 @@ class DiamondsConfig {
     }
 }
 exports.DiamondsConfig = DiamondsConfig;
-//# sourceMappingURL=HardhatRuntimeEnvironmentFields.js.map
+//# sourceMappingURL=DiamondsConfig.js.map

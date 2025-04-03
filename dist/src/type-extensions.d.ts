@@ -1,17 +1,16 @@
-import "hardhat/types/config";
 import { DiamondsPathsConfig } from "@gnus.ai/diamonds";
-import { DiamondsConfig } from "./DiamondsConfig";
+import "hardhat/types/config";
 declare module "hardhat/types/config" {
     interface HardhatUserConfig {
-        diamondsConfig?: DiamondsPathsConfig;
+        diamonds?: DiamondsPathsConfig;
     }
     interface HardhatConfig {
-        diamondsConfig: DiamondsPathsConfig;
+        diamonds: DiamondsPathsConfig;
     }
 }
 declare module "hardhat/types/runtime" {
     interface HardhatRuntimeEnvironment {
-        DiamondsConfig: DiamondsConfig;
+        diamonds: DiamondsPathsConfig;
     }
 }
 //# sourceMappingURL=type-extensions.d.ts.map
