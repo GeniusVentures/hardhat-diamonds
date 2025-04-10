@@ -9,7 +9,7 @@ const plugins_1 = require("hardhat/plugins");
 const DiamondsConfig_1 = require("./DiamondsConfig");
 (0, config_1.extendConfig)((config, userConfig) => {
     // Set default diamonds config to an empty object if not provided
-    console.log('diamonds config:', userConfig.diamonds);
+    // console.log('diamonds config:', userConfig.diamonds);
     const defaultDiamondsConfig = {
         // Default values for diamonds config
         paths: {}

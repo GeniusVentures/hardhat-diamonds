@@ -6,7 +6,7 @@ import { DiamondsConfig } from "./DiamondsConfig";
 
 extendConfig((config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
   // Set default diamonds config to an empty object if not provided
-  console.log('diamonds config:', userConfig.diamonds);
+  // console.log('diamonds config:', userConfig.diamonds);
   const defaultDiamondsConfig: DiamondsPathsConfig = {
     // Default values for diamonds config
     paths: {}
