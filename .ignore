@@ -3,7 +3,5 @@ flat
 .mocharc.json
 .travis.yml
 package-lock.json
-package.json
-tsconfig.json
 tslint.json
 test/

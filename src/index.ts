@@ -3,6 +3,7 @@ import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
 import { lazyObject } from "hardhat/plugins";
 import { DiamondsPathsConfig } from "@gnus.ai/diamonds";
 import { DiamondsConfig } from "./DiamondsConfig";
+import "./type-extensions";
 
 extendConfig((config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
   // Set default diamonds config to an empty object if not provided
