@@ -1,4 +1,5 @@
 import { DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondsConfig } from "./DiamondsConfig";
 import "hardhat/types/config";
 
 declare module "hardhat/types/config" {
@@ -14,6 +15,6 @@ declare module "hardhat/types/config" {
 // Extend HardhatRuntimeEnvironment to include diamondsConfig
 declare module "hardhat/types/runtime" {
   interface HardhatRuntimeEnvironment {
-    diamonds: DiamondsPathsConfig;
+    diamonds: DiamondsConfig;
   }
 }

@@ -5,17 +5,18 @@ exports.DiamondsConfig = void 0;
 //   [key: string]: any; // Add index signature to allow string indexing
 // }
 class DiamondsConfig {
+    // paths: Record<string, DiamondPathsConfig>;
     constructor(hre) {
         this.hre = hre;
         this.diamonds = this.hre.config.diamonds;
-        this.paths = {};
+        // this.paths = {};
     }
-    /**
-     * Get the diamonds configuration.
-     */
-    getDiamondsConfig() {
-        return this.diamonds;
-    }
+    // /**
+    //  * Get the diamonds configuration.
+    //  */
+    // public getDiamondsConfig(): DiamondsPathsConfig {
+    //   return this.diamonds;
+    // }
     /**
       const config = this.diamondsConfig[diamondName] as any; // Ensure type compatibility
      * @param diamondName - The name of the diamond.

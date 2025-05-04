@@ -11,20 +11,20 @@ import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
 export class DiamondsConfig {
   private hre: HardhatRuntimeEnvironment;
   public diamonds: DiamondsPathsConfig;
-  paths: Record<string, DiamondPathsConfig>;
+  // paths: Record<string, DiamondPathsConfig>;
 
   constructor(hre: HardhatRuntimeEnvironment) {
     this.hre = hre;
     this.diamonds = this.hre.config.diamonds;
-    this.paths = {};
+    // this.paths = {};
   }
 
-  /**
-   * Get the diamonds configuration.
-   */
-  public getDiamondsConfig(): DiamondsPathsConfig {
-    return this.diamonds;
-  }
+  // /**
+  //  * Get the diamonds configuration.
+  //  */
+  // public getDiamondsConfig(): DiamondsPathsConfig {
+  //   return this.diamonds;
+  // }
 
   /**
     const config = this.diamondsConfig[diamondName] as any; // Ensure type compatibility
