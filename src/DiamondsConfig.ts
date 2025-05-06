@@ -19,13 +19,6 @@ export class DiamondsConfig {
     // this.paths = {};
   }
 
-  // /**
-  //  * Get the diamonds configuration.
-  //  */
-  // public getDiamondsConfig(): DiamondsPathsConfig {
-  //   return this.diamonds;
-  // }
-
   /**
     const config = this.diamondsConfig[diamondName] as any; // Ensure type compatibility
    * @param diamondName - The name of the diamond.
