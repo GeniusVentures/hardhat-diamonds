@@ -43,8 +43,8 @@ export const TestConstants = {
 
   // Test file paths
   PATHS: {
-    FIXTURE_PROJECTS: "./test/fixture-projects",
-    HARDHAT_PROJECT: "./test/fixture-projects/hardhat-project",
+    FIXTURE_PROJECTS: "./fixtures/fixture-projects",
+    HARDHAT_PROJECT: "./fixtures/fixture-projects/hardhat-project",
     MOCK_CONTRACTS: "./test/mocks/contracts",
     TEST_DATA: "./test/data",
   },
