@@ -1,0 +1,54 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const chai_1 = require("chai");
+const child_process_1 = require("child_process");
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+describe("Integration: Hardhat Diamonds Extension", function () {
+    const fixtureDir = path_1.default.join(__dirname, "fixture-projects", "hardhat-project");
+    const configPath = path_1.default.join(fixtureDir, "hardhat.config.ts");
+    const diamondsConfig = `\n  diamonds: {\n    paths: {\n      IntegrationDiamond: {}\n    }\n  },`;
+    const env = {
+        ...process.env,
+        DEFENDER_API_KEY: "dummy",
+        DEFENDER_API_SECRET: "dummy",
+    };
+    before(function () {
+        // Insert diamonds config into hardhat.config.ts
+        let configContent = fs_1.default.readFileSync(configPath, "utf8");
+        configContent = configContent.replace(/(defaultNetwork: "hardhat",)/, `$1${diamondsConfig}`);
+        fs_1.default.writeFileSync(configPath, configContent, "utf8");
+    });
+    after(function () {
+        // Remove diamonds config from hardhat.config.ts
+        let configContent = fs_1.default.readFileSync(configPath, "utf8");
+        configContent = configContent.replace(/\s+diamonds: \{[\s\S]*?\},/, "");
+        fs_1.default.writeFileSync(configPath, configContent, "utf8");
+    });
+    it("should not throw type errors in hardhat.config.ts", function () {
+        // Run tsc in the fixture project
+        const tscPath = path_1.default.join(__dirname, "../../..", "node_modules", ".bin", "tsc");
+        const result = (0, child_process_1.execSync)(`${tscPath} --noEmit`, {
+            cwd: fixtureDir,
+            stdio: "pipe",
+            env,
+        }).toString();
+        (0, chai_1.expect)(result).to.equal("");
+    });
+    it("should load diamonds config at runtime", function () {
+        // Create a script to check config at runtime
+        const scriptPath = path_1.default.join(fixtureDir, "checkDiamondsConfig.js");
+        fs_1.default.writeFileSync(scriptPath, `const hre = require("hardhat");\nconsole.log(JSON.stringify(hre.config.diamonds));`, "utf8");
+        const result = (0, child_process_1.execSync)(`npx hardhat run checkDiamondsConfig.js`, {
+            cwd: fixtureDir,
+            stdio: ["pipe", "pipe", "pipe"],
+            env,
+        }).toString();
+        (0, chai_1.expect)(JSON.parse(result)).to.have.property("paths");
+        fs_1.default.unlinkSync(scriptPath);
+    });
+});
+//# sourceMappingURL=integration-diamonds-extension.test.js.map

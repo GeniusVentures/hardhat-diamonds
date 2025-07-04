@@ -4,4 +4,8 @@ flat
 .travis.yml
 package-lock.json
 tslint.json
-test/
+dist
+yarn.lock
+node_modules/
+.vscode/
+.yarn/

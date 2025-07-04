@@ -25,7 +25,14 @@
     "build": "tsc",
     "watch": "tsc -w",
     "prepublishOnly": "npm run build",
-    "test": "mocha --exit --recursive 'test/**/*.test.ts'"
+    "test": "hardhat test",
+    "test:comprehensive": "npx hardhat test test/unit/core/DiamondsConfig.test.ts test/unit/core/HardhatPlugin.test.ts test/integration/e2e/ConfigurationManagement.test.ts",
+    "test:core": "npx hardhat test test/unit/core/DiamondsConfig.test.ts test/unit/core/HardhatPlugin.test.ts",
+    "test:existing": "npx hardhat test test/unit/diamonds-config.test.ts test/project.test.ts",
+    "test:config": "npx hardhat test test/integration/e2e/ConfigurationManagement.test.ts",
+    "test:watch": "hardhat test --watch",
+    "test:coverage": "npx hardhat coverage",
+    "test:verbose": "hardhat test --verbose"
   },
   "files": [
     "dist/",
@@ -33,12 +40,15 @@
     "README.md"
   ],
   "devDependencies": {
+    "@gnus.ai/diamonds": "git+https://github.com/GeniusVentures/diamonds.git",
     "@types/chai": "^4.1.7",
     "@types/fs-extra": "^5.0.4",
     "@types/mocha": "^5.2.6",
     "@types/node": "^18",
     "chai": "^4.2.0",
+    "ethers": "^5.8.0",
     "hardhat": "^2.22.19",
+    "hardhat-multichain": "git+https://github.com/GeniusVentures/hardhat-multchain.git",
     "mocha": "^7.1.2",
     "prettier": "^3.5.3",
     "sinon": "^19.0.2",
@@ -49,6 +59,8 @@
     "typescript": "^4.0.3"
   },
   "peerDependencies": {
-    "hardhat": "^2.0.0"
-  }
+    "hardhat": "^2.0.0",
+    "@gnus.ai/diamonds": "git+https://github.com/GeniusVentures/diamonds.git"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

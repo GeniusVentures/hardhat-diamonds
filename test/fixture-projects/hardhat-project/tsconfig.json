@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "."
+  },
+  "include": [
+    "hardhat.config.ts"
+  ],
+  "exclude": [
+    "../../../src/**/*",
+    "../../../node_modules/**/*"
+  ]
+}
