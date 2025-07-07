@@ -1,5 +1,5 @@
 {
-  "name": "@gnus.ai/hardhat-diamonds",
+  "name": "hardhat-diamonds",
   "version": "0.0.1",
   "description": "Tools for deploying and interfacing with ERC-2535 Diamond Proxies",
   "main": "dist/src/index.js",
@@ -19,6 +19,9 @@
   ],
   "license": "MIT",
   "repository": "github:GeniusVentures/hardhat-diamonds",
+  "bugs": {
+    "url": "https://github.com/GeniusVentures/hardhat-diamonds/issues"
+  },
   "scripts": {
     "lint:fix": "prettier --write 'src/**/*.{js,ts}' 'test/**/*.{js,ts}' && tslint --fix --config tslint.json --project tsconfig.json",
     "lint": "tslint --config tslint.json --project tsconfig.json",
@@ -29,10 +32,7 @@
     "test:comprehensive": "npx hardhat test test/unit/core/DiamondsConfig.test.ts test/unit/core/HardhatPlugin.test.ts test/integration/e2e/ConfigurationManagement.test.ts",
     "test:core": "npx hardhat test test/unit/core/DiamondsConfig.test.ts test/unit/core/HardhatPlugin.test.ts",
     "test:existing": "npx hardhat test test/unit/diamonds-config.test.ts test/project.test.ts",
-    "test:config": "npx hardhat test test/integration/e2e/ConfigurationManagement.test.ts",
-    "test:watch": "npx hardhat test --watch",
-    "test:coverage": "npx hardhat coverage",
-    "test:verbose": "hardhat test --verbose"
+    "test:config": "npx hardhat test test/integration/e2e/ConfigurationManagement.test.ts"
   },
   "files": [
     "dist/",
@@ -40,7 +40,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "@gnus.ai/diamonds": "git+https://github.com/GeniusVentures/diamonds.git",
+    "diamonds": "^0.0.1",
     "@types/chai": "^4.1.7",
     "@types/fs-extra": "^5.0.4",
     "@types/mocha": "^5.2.6",
@@ -48,7 +48,7 @@
     "chai": "^4.2.0",
     "ethers": "^5.8.0",
     "hardhat": "^2.22.19",
-    "hardhat-multichain": "git+https://github.com/GeniusVentures/hardhat-multchain.git",
+    "hardhat-multichain": "^0.0.1",
     "mocha": "^7.1.2",
     "prettier": "^3.5.3",
     "sinon": "^19.0.2",
@@ -60,7 +60,7 @@
   },
   "peerDependencies": {
     "hardhat": "^2.0.0",
-    "@gnus.ai/diamonds": "git+https://github.com/GeniusVentures/diamonds.git"
+    "diamonds": "^0.0.1"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
