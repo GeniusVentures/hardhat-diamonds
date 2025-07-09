@@ -40,15 +40,14 @@
     "README.md"
   ],
   "devDependencies": {
-    "diamonds": "^0.0.1",
     "@types/chai": "^4.1.7",
     "@types/fs-extra": "^5.0.4",
     "@types/mocha": "^5.2.6",
     "@types/node": "^18",
     "chai": "^4.2.0",
+    "diamonds": "git+https://github.com/GeniusVentures/diamonds.git",
     "ethers": "^5.8.0",
     "hardhat": "^2.22.19",
-    "hardhat-multichain": "^0.0.1",
     "mocha": "^7.1.2",
     "prettier": "^3.5.3",
     "sinon": "^19.0.2",
@@ -59,8 +58,8 @@
     "typescript": "^4.0.3"
   },
   "peerDependencies": {
-    "hardhat": "^2.0.0",
-    "diamonds": "^0.0.1"
+    "diamonds": "^0.0.1",
+    "hardhat": "^2.0.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.6.0"
 }
