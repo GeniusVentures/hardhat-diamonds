@@ -9,11 +9,10 @@
 // }
 // export function useEnvironment(fixtureProjectName: string) {
 //   beforeEach("Loading hardhat environment", function () {
-//     process.chdir(path.join(__dirname, "fixture-projects", fixtureProjectName));
+//     process.chdir(path.join(__dirname, "../fixtures/fixture-projects", fixtureProjectName));
 //     this.hre = require("hardhat");
 //   });
 //   afterEach("Resetting hardhat", function () {
 //     resetHardhatContext();
 //   });
 // }
-//# sourceMappingURL=helpers.js.map

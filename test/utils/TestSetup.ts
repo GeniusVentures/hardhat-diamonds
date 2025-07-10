@@ -1,5 +1,8 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import {
+  DiamondPathsConfig,
+  DiamondsPathsConfig,
+} from "../../src/types/diamonds";
 import { DiamondsConfig } from "../../src/DiamondsConfig";
 
 /**
@@ -9,7 +12,9 @@ export class TestSetup {
   /**
    * Creates a mock HardhatRuntimeEnvironment for testing
    */
-  static createMockHRE(diamondsConfig: DiamondsPathsConfig = { paths: {} }): HardhatRuntimeEnvironment {
+  static createMockHRE(
+    diamondsConfig: DiamondsPathsConfig = { paths: {} }
+  ): HardhatRuntimeEnvironment {
     return {
       config: {
         diamonds: diamondsConfig,
@@ -38,7 +43,7 @@ export class TestSetup {
       hardhatArguments: {},
       tasks: {},
       scopes: {},
-      run: async () => { },
+      run: async () => {},
       ethers: {} as any,
       waffle: {} as any,
       network: {
@@ -53,7 +58,9 @@ export class TestSetup {
   /**
    * Creates a test DiamondsConfig instance
    */
-  static createDiamondsConfig(diamondsConfig: DiamondsPathsConfig = { paths: {} }): DiamondsConfig {
+  static createDiamondsConfig(
+    diamondsConfig: DiamondsPathsConfig = { paths: {} }
+  ): DiamondsConfig {
     const hre = this.createMockHRE(diamondsConfig);
     return new DiamondsConfig(hre);
   }

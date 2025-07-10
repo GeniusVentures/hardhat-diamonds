@@ -180,4 +180,3 @@ describe("DiamondsConfig", function () {
         });
     });
 });
-//# sourceMappingURL=DiamondsConfig.test.js.map

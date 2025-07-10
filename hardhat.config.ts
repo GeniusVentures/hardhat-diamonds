@@ -1,11 +1,12 @@
 import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
 
 // Load the plugin
 import "./src/index";
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.17",
+    version: "0.8.24",
     settings: {
       optimizer: {
         enabled: true,
@@ -31,8 +32,8 @@ const config: HardhatUserConfig = {
   diamonds: {
     paths: {
       MockDiamond: {
-        deploymentsPath: 'test/mocks/diamonds',
-        contractsPath: 'test/mocks/contracts',
+        deploymentsPath: "test/mocks/diamonds",
+        contractsPath: "test/mocks/contracts",
       },
     },
   },

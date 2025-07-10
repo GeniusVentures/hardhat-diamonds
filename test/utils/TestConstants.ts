@@ -51,7 +51,8 @@ export const TestConstants = {
 
   // Error messages
   ERROR_MESSAGES: {
-    DIAMOND_NOT_FOUND: (name: string) => `Diamond configuration for "${name}" not found.`,
+    DIAMOND_NOT_FOUND: (name: string) =>
+      `Diamond configuration for "${name}" not found.`,
     INVALID_CONFIG: "Invalid diamond configuration",
     MISSING_PARAMETER: "Missing required parameter",
   },
@@ -78,6 +79,9 @@ export const TestConstants = {
 } as const;
 
 // Type-safe access to constants
-export type TestAddress = typeof TestConstants.ADDRESSES[keyof typeof TestConstants.ADDRESSES];
-export type TestDiamondName = typeof TestConstants.DIAMOND_NAMES[keyof typeof TestConstants.DIAMOND_NAMES];
-export type TestFunctionSelector = typeof TestConstants.FUNCTION_SELECTORS[keyof typeof TestConstants.FUNCTION_SELECTORS];
+export type TestAddress =
+  (typeof TestConstants.ADDRESSES)[keyof typeof TestConstants.ADDRESSES];
+export type TestDiamondName =
+  (typeof TestConstants.DIAMOND_NAMES)[keyof typeof TestConstants.DIAMOND_NAMES];
+export type TestFunctionSelector =
+  (typeof TestConstants.FUNCTION_SELECTORS)[keyof typeof TestConstants.FUNCTION_SELECTORS];

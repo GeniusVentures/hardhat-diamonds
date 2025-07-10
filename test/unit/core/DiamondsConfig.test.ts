@@ -26,11 +26,15 @@ describe("DiamondsConfig", function () {
     });
 
     it("should create DiamondsConfig instance with single diamond", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       diamondsConfig = TestSetup.createDiamondsConfig(config);
 
       AssertionHelpers.assertDiamondsConfigValid(diamondsConfig);
-      AssertionHelpers.assertContainsDiamonds(diamondsConfig.diamonds, [TestConstants.DIAMOND_NAMES.TEST]);
+      AssertionHelpers.assertContainsDiamonds(diamondsConfig.diamonds, [
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 1);
     });
 
@@ -44,7 +48,10 @@ describe("DiamondsConfig", function () {
       diamondsConfig = TestSetup.createDiamondsConfig(config);
 
       AssertionHelpers.assertDiamondsConfigValid(diamondsConfig);
-      AssertionHelpers.assertContainsDiamonds(diamondsConfig.diamonds, diamondNames);
+      AssertionHelpers.assertContainsDiamonds(
+        diamondsConfig.diamonds,
+        diamondNames
+      );
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 3);
     });
 
@@ -62,7 +69,9 @@ describe("DiamondsConfig", function () {
     });
 
     it("should properly reference the HRE config", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
       diamondsConfig = new DiamondsConfig(hre);
 
@@ -81,13 +90,23 @@ describe("DiamondsConfig", function () {
     });
 
     it("should return diamond config for existing diamond", function () {
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.MAIN);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
     });
 
     it("should return the correct diamond config object", function () {
-      const testConfig = diamondsConfig.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST);
-      const mainConfig = diamondsConfig.getDiamondConfig(TestConstants.DIAMOND_NAMES.MAIN);
+      const testConfig = diamondsConfig.getDiamondConfig(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      const mainConfig = diamondsConfig.getDiamondConfig(
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
 
       expect(testConfig).to.be.an("object");
       expect(mainConfig).to.be.an("object");
@@ -95,7 +114,10 @@ describe("DiamondsConfig", function () {
     });
 
     it("should throw error for non-existent diamond", function () {
-      AssertionHelpers.assertDiamondConfigNotExists(diamondsConfig, TestConstants.DIAMOND_NAMES.INVALID);
+      AssertionHelpers.assertDiamondConfigNotExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.INVALID
+      );
     });
 
     it("should throw error with correct message for non-existent diamond", function () {
@@ -114,9 +136,18 @@ describe("DiamondsConfig", function () {
     });
 
     it("should be case-sensitive for diamond names", function () {
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
-      AssertionHelpers.assertDiamondConfigNotExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST.toLowerCase());
-      AssertionHelpers.assertDiamondConfigNotExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST.toUpperCase());
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      AssertionHelpers.assertDiamondConfigNotExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST.toLowerCase()
+      );
+      AssertionHelpers.assertDiamondConfigNotExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST.toUpperCase()
+      );
     });
 
     it("should handle special characters in diamond names", function () {
@@ -143,7 +174,10 @@ describe("DiamondsConfig", function () {
 
       // These should all throw appropriate errors
       AssertionHelpers.assertDiamondConfigNotExists(diamondsConfig, "null");
-      AssertionHelpers.assertDiamondConfigNotExists(diamondsConfig, "undefined");
+      AssertionHelpers.assertDiamondConfigNotExists(
+        diamondsConfig,
+        "undefined"
+      );
     });
 
     it("should handle very long diamond names", function () {
@@ -165,24 +199,35 @@ describe("DiamondsConfig", function () {
 
   describe("integration with HRE", function () {
     it("should reflect changes in HRE config", function () {
-      const initialConfig = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const initialConfig = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(initialConfig);
       diamondsConfig = new DiamondsConfig(hre);
 
       // Initial state
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 1);
 
       // Modify HRE config
-      hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] = MockFactories.createDiamondPathsConfig();
+      hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] =
+        MockFactories.createDiamondPathsConfig();
 
       // Changes should be reflected
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.MAIN);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 2);
     });
 
     it("should maintain reference to HRE config object", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
       diamondsConfig = new DiamondsConfig(hre);
 
@@ -193,7 +238,10 @@ describe("DiamondsConfig", function () {
 
   describe("performance", function () {
     it("should handle large numbers of diamonds efficiently", function () {
-      const diamondNames = Array.from({ length: 1000 }, (_, i) => `Diamond${i}`);
+      const diamondNames = Array.from(
+        { length: 1000 },
+        (_, i) => `Diamond${i}`
+      );
       const config = MockFactories.createDiamondsPathsConfig(diamondNames);
       diamondsConfig = TestSetup.createDiamondsConfig(config);
 
@@ -213,7 +261,9 @@ describe("DiamondsConfig", function () {
     });
 
     it("should handle repeated access efficiently", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       diamondsConfig = TestSetup.createDiamondsConfig(config);
 
       const startTime = Date.now();

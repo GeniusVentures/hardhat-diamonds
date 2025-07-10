@@ -13,7 +13,7 @@ require("./type-extensions");
     // console.log('diamonds config:', userConfig.diamonds);
     const defaultDiamondsConfig = {
         // Default values for diamonds config
-        paths: {}
+        paths: {},
     };
     config.diamonds = {
         ...defaultDiamondsConfig,
@@ -26,4 +26,3 @@ require("./type-extensions");
 });
 var DiamondsConfig_2 = require("./DiamondsConfig");
 Object.defineProperty(exports, "DiamondsConfig", { enumerable: true, get: function () { return __importDefault(DiamondsConfig_2).default; } });
-//# sourceMappingURL=index.js.map

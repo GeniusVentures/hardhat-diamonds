@@ -64,4 +64,3 @@ describe('Hardhat Diamonds Extension (integration)', function () {
         (0, chai_1.expect)(() => diamondsConfig.getDiamondConfig("MissingDiamond")).to.throw(/Diamond configuration for "MissingDiamond" not found/);
     });
 });
-//# sourceMappingURL=diamonds-config.test.js.map

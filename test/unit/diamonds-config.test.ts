@@ -12,8 +12,8 @@ describe("Hardhat Diamonds Extension (unit)", function () {
 });
 
 // This test is skipped because Hardhat plugins cannot be unit tested outside of a Hardhat runtime context.
-describe('Hardhat Diamonds Extension (integration)', function () {
-  it('should add diamonds config to Hardhat config with defaults', function () {
+describe("Hardhat Diamonds Extension (integration)", function () {
+  it("should add diamonds config to Hardhat config with defaults", function () {
     const userConfig: HardhatUserConfig = {};
     const config: any = {};
     extendConfig((c, u) => {

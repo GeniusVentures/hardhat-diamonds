@@ -1,4 +1,4 @@
-import { DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondsPathsConfig } from "./types/diamonds";
 import { DiamondsConfig } from "./DiamondsConfig";
 import "hardhat/types/config";
 

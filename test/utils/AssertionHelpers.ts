@@ -1,6 +1,9 @@
 import { expect } from "chai";
 import { DiamondsConfig } from "../../src/DiamondsConfig";
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import {
+  DiamondPathsConfig,
+  DiamondsPathsConfig,
+} from "../../src/types/diamonds";
 
 /**
  * Custom assertion helpers for diamond-specific validations
@@ -59,7 +62,7 @@ export class AssertionHelpers {
     diamondNames: string[]
   ): void {
     expect(config.paths).to.be.an("object");
-    diamondNames.forEach(name => {
+    diamondNames.forEach((name) => {
       expect(config.paths).to.have.property(name);
     });
   }
@@ -72,7 +75,7 @@ export class AssertionHelpers {
     diamondNames: string[]
   ): void {
     expect(config.paths).to.be.an("object");
-    diamondNames.forEach(name => {
+    diamondNames.forEach((name) => {
       expect(config.paths).to.not.have.property(name);
     });
   }
@@ -88,7 +91,10 @@ export class AssertionHelpers {
   /**
    * Asserts that a configuration has a specific number of diamonds
    */
-  static assertDiamondsCount(config: DiamondsPathsConfig, expectedCount: number): void {
+  static assertDiamondsCount(
+    config: DiamondsPathsConfig,
+    expectedCount: number
+  ): void {
     expect(config.paths).to.be.an("object");
     expect(Object.keys(config.paths)).to.have.length(expectedCount);
   }
@@ -127,10 +133,7 @@ export class AssertionHelpers {
   /**
    * Asserts that a function throws an error with a specific message
    */
-  static assertThrowsWithMessage(
-    fn: () => void,
-    message: string
-  ): void {
+  static assertThrowsWithMessage(fn: () => void, message: string): void {
     expect(fn).to.throw(Error).with.property("message").that.includes(message);
   }
 

@@ -24,12 +24,12 @@ exports.TestConstants = {
     },
     // Function selectors (first 4 bytes of keccak256 hash)
     FUNCTION_SELECTORS: {
-        DIAMOND_CUT: "0x1f931c1c",
-        LOUPE_FACETS: "0x7a0ed627",
-        LOUPE_FACET_ADDRESSES: "0x52ef6b2c",
-        LOUPE_FACET_ADDRESS: "0xcdffacc6",
-        LOUPE_FACET_FUNCTION_SELECTORS: "0xadfca15e",
-        SUPPORTS_INTERFACE: "0x01ffc9a7",
+        DIAMOND_CUT: "0x1f931c1c", // diamondCut(FacetCut[],address,bytes)
+        LOUPE_FACETS: "0x7a0ed627", // facets()
+        LOUPE_FACET_ADDRESSES: "0x52ef6b2c", // facetAddresses()
+        LOUPE_FACET_ADDRESS: "0xcdffacc6", // facetAddress(bytes4)
+        LOUPE_FACET_FUNCTION_SELECTORS: "0xadfca15e", // facetFunctionSelectors(address)
+        SUPPORTS_INTERFACE: "0x01ffc9a7", // supportsInterface(bytes4)
         TEST_FUNCTION_1: "0x12345678",
         TEST_FUNCTION_2: "0x23456789",
         TEST_FUNCTION_3: "0x34567890",
@@ -42,8 +42,8 @@ exports.TestConstants = {
     },
     // Test file paths
     PATHS: {
-        FIXTURE_PROJECTS: "./test/fixture-projects",
-        HARDHAT_PROJECT: "./test/fixture-projects/hardhat-project",
+        FIXTURE_PROJECTS: "./fixtures/fixture-projects",
+        HARDHAT_PROJECT: "./fixtures/fixture-projects/hardhat-project",
         MOCK_CONTRACTS: "./test/mocks/contracts",
         TEST_DATA: "./test/data",
     },
@@ -72,4 +72,3 @@ exports.TestConstants = {
         },
     },
 };
-//# sourceMappingURL=TestConstants.js.map

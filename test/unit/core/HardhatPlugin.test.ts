@@ -34,6 +34,7 @@ describe("Hardhat Diamonds Plugin", function () {
   describe("Config Extension Behavior", function () {
     it("should provide default diamonds config when none specified", function () {
       const userConfig: HardhatUserConfig = {};
+      // eslint-disable-next-line no-unused-vars
       const config = {} as HardhatConfig;
 
       // Simulate the config extension behavior
@@ -50,7 +51,8 @@ describe("Hardhat Diamonds Plugin", function () {
       const userConfig: HardhatUserConfig = {
         diamonds: {
           paths: {
-            [TestConstants.DIAMOND_NAMES.TEST]: MockFactories.createDiamondPathsConfig(),
+            [TestConstants.DIAMOND_NAMES.TEST]:
+              MockFactories.createDiamondPathsConfig(),
           },
         },
       };
@@ -64,15 +66,19 @@ describe("Hardhat Diamonds Plugin", function () {
       };
 
       expect(resultConfig).to.have.property("paths");
-      expect(resultConfig.paths).to.have.property(TestConstants.DIAMOND_NAMES.TEST);
+      expect(resultConfig.paths).to.have.property(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
     });
 
     it("should preserve existing paths when merging", function () {
       const userConfig: HardhatUserConfig = {
         diamonds: {
           paths: {
-            [TestConstants.DIAMOND_NAMES.TEST]: MockFactories.createDiamondPathsConfig(),
-            [TestConstants.DIAMOND_NAMES.MAIN]: MockFactories.createDiamondPathsConfig(),
+            [TestConstants.DIAMOND_NAMES.TEST]:
+              MockFactories.createDiamondPathsConfig(),
+            [TestConstants.DIAMOND_NAMES.MAIN]:
+              MockFactories.createDiamondPathsConfig(),
           },
         },
       };
@@ -84,8 +90,12 @@ describe("Hardhat Diamonds Plugin", function () {
         ...userConfig.diamonds,
       };
 
-      expect(resultConfig.paths).to.have.property(TestConstants.DIAMOND_NAMES.TEST);
-      expect(resultConfig.paths).to.have.property(TestConstants.DIAMOND_NAMES.MAIN);
+      expect(resultConfig.paths).to.have.property(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      expect(resultConfig.paths).to.have.property(
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
       expect(Object.keys(resultConfig.paths)).to.have.length(2);
     });
 
@@ -120,7 +130,9 @@ describe("Hardhat Diamonds Plugin", function () {
 
   describe("Environment Extension Behavior", function () {
     it("should create lazy DiamondsConfig object", function () {
-      const mockHre = TestSetup.createMockHRE(MockFactories.createEmptyDiamondsConfig());
+      const mockHre = TestSetup.createMockHRE(
+        MockFactories.createEmptyDiamondsConfig()
+      );
 
       // Simulate the environment extension by creating a lazy object
       const lazyDiamonds = () => new DiamondsConfig(mockHre);
@@ -132,7 +144,9 @@ describe("Hardhat Diamonds Plugin", function () {
 
     it("should attach DiamondsConfig to hre.diamonds", function () {
       const mockHre = TestSetup.createMockHRE(
-        MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST])
+        MockFactories.createDiamondsPathsConfig([
+          TestConstants.DIAMOND_NAMES.TEST,
+        ])
       );
 
       // Simulate attaching to HRE
@@ -167,14 +181,18 @@ describe("Hardhat Diamonds Plugin", function () {
     });
 
     it("should maintain reference to HRE config", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const mockHre = TestSetup.createMockHRE(config);
 
       // Simulate attaching to HRE
       const diamonds = new DiamondsConfig(mockHre);
       (mockHre as any).diamonds = diamonds;
 
-      expect((mockHre as any).diamonds.diamonds).to.equal(mockHre.config.diamonds);
+      expect((mockHre as any).diamonds.diamonds).to.equal(
+        mockHre.config.diamonds
+      );
     });
   });
 
@@ -184,13 +202,16 @@ describe("Hardhat Diamonds Plugin", function () {
       const userConfig: HardhatUserConfig = {
         diamonds: {
           paths: {
-            [TestConstants.DIAMOND_NAMES.TEST]: MockFactories.createDiamondPathsConfig(),
+            [TestConstants.DIAMOND_NAMES.TEST]:
+              MockFactories.createDiamondPathsConfig(),
           },
         },
       };
 
       expect(userConfig.diamonds).to.be.an("object");
-      expect(userConfig.diamonds!.paths).to.have.property(TestConstants.DIAMOND_NAMES.TEST);
+      expect(userConfig.diamonds!.paths).to.have.property(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
     });
 
     it("should extend HardhatConfig interface", function () {
@@ -198,13 +219,16 @@ describe("Hardhat Diamonds Plugin", function () {
       const config = {
         diamonds: {
           paths: {
-            [TestConstants.DIAMOND_NAMES.TEST]: MockFactories.createDiamondPathsConfig(),
+            [TestConstants.DIAMOND_NAMES.TEST]:
+              MockFactories.createDiamondPathsConfig(),
           },
         },
       } as unknown as HardhatConfig;
 
       expect(config.diamonds).to.be.an("object");
-      expect(config.diamonds.paths).to.have.property(TestConstants.DIAMOND_NAMES.TEST);
+      expect(config.diamonds.paths).to.have.property(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
     });
   });
 
@@ -218,14 +242,28 @@ describe("Hardhat Diamonds Plugin", function () {
       (mockHre as any).diamonds = diamonds;
 
       // Verify all diamonds are accessible
-      AssertionHelpers.assertDiamondConfigExists((mockHre as any).diamonds, "MainDiamond");
-      AssertionHelpers.assertDiamondConfigExists((mockHre as any).diamonds, "UpgradeableDiamond");
-      AssertionHelpers.assertDiamondConfigExists((mockHre as any).diamonds, "TestDiamond");
-      AssertionHelpers.assertDiamondsCount((mockHre as any).diamonds.diamonds, 3);
+      AssertionHelpers.assertDiamondConfigExists(
+        (mockHre as any).diamonds,
+        "MainDiamond"
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        (mockHre as any).diamonds,
+        "UpgradeableDiamond"
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        (mockHre as any).diamonds,
+        "TestDiamond"
+      );
+      AssertionHelpers.assertDiamondsCount(
+        (mockHre as any).diamonds.diamonds,
+        3
+      );
     });
 
     it("should handle configuration changes at runtime", function () {
-      const initialConfig = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const initialConfig = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const mockHre = TestSetup.createMockHRE(initialConfig);
 
       // Simulate the full plugin integration
@@ -233,7 +271,10 @@ describe("Hardhat Diamonds Plugin", function () {
       (mockHre as any).diamonds = diamonds;
 
       // Initial state
-      AssertionHelpers.assertDiamondsCount((mockHre as any).diamonds.diamonds, 1);
+      AssertionHelpers.assertDiamondsCount(
+        (mockHre as any).diamonds.diamonds,
+        1
+      );
 
       // Add a new diamond configuration at runtime
       mockHre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] =
@@ -244,11 +285,16 @@ describe("Hardhat Diamonds Plugin", function () {
         (mockHre as any).diamonds,
         TestConstants.DIAMOND_NAMES.MAIN
       );
-      AssertionHelpers.assertDiamondsCount((mockHre as any).diamonds.diamonds, 2);
+      AssertionHelpers.assertDiamondsCount(
+        (mockHre as any).diamonds.diamonds,
+        2
+      );
     });
 
     it("should maintain consistency across multiple access patterns", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const mockHre = TestSetup.createMockHRE(config);
 
       // Simulate the full plugin integration
@@ -256,9 +302,14 @@ describe("Hardhat Diamonds Plugin", function () {
       (mockHre as any).diamonds = diamonds;
 
       // Access the same configuration multiple ways
-      const config1 = (mockHre as any).diamonds.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST);
-      const config2 = (mockHre as any).diamonds.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST);
-      const config3 = mockHre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.TEST];
+      const config1 = (mockHre as any).diamonds.getDiamondConfig(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      const config2 = (mockHre as any).diamonds.getDiamondConfig(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      const config3 =
+        mockHre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.TEST];
 
       // Should all reference the same object
       expect(config1).to.equal(config2);

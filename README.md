@@ -56,15 +56,15 @@ const config: HardhatUserConfig = {
   // ... other Hardhat configuration
   diamonds: {
     paths: {
-      "MyDiamond": {
+      MyDiamond: {
         // Diamond-specific configuration
         // Refer to diamonds documentation for available options
       },
-      "AnotherDiamond": {
+      AnotherDiamond: {
         // Configuration for another Diamond contract
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 export default config;

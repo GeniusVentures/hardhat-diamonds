@@ -1,5 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondsPathsConfig } from "diamonds";
 import { DiamondsConfig } from "../../src/DiamondsConfig";
 /**
  * Test setup utilities for hardhat-diamonds tests
@@ -22,4 +22,3 @@ export declare class TestSetup {
      */
     static cleanup(): void;
 }
-//# sourceMappingURL=TestSetup.d.ts.map

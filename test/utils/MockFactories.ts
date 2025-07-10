@@ -1,4 +1,7 @@
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import {
+  DiamondPathsConfig,
+  DiamondsPathsConfig,
+} from "../../src/types/diamonds";
 
 /**
  * Factory functions for creating test data and mock objects
@@ -7,7 +10,9 @@ export class MockFactories {
   /**
    * Creates a basic DiamondPathsConfig for testing
    */
-  static createDiamondPathsConfig(overrides: Partial<DiamondPathsConfig> = {}): DiamondPathsConfig {
+  static createDiamondPathsConfig(
+    overrides: Partial<DiamondPathsConfig> = {}
+  ): DiamondPathsConfig {
     return {
       ...overrides,
     };
@@ -22,7 +27,7 @@ export class MockFactories {
   ): DiamondsPathsConfig {
     const paths: Record<string, DiamondPathsConfig> = {};
 
-    diamondNames.forEach(name => {
+    diamondNames.forEach((name) => {
       paths[name] = this.createDiamondPathsConfig(configOverrides[name] || {});
     });
 

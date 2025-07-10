@@ -18,20 +18,29 @@ describe("Configuration Management Integration", function () {
 
   describe("Dynamic Configuration Updates", function () {
     it("should reflect runtime configuration changes", function () {
-      const initialConfig = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const initialConfig = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(initialConfig);
       diamondsConfig = new DiamondsConfig(hre);
 
       // Initial state
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 1);
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
 
       // Add new diamond at runtime
-      hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] = MockFactories.createDiamondPathsConfig();
+      hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] =
+        MockFactories.createDiamondPathsConfig();
 
       // Should immediately reflect the change
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 2);
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.MAIN);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
     });
 
     it("should handle diamond removal at runtime", function () {
@@ -50,24 +59,36 @@ describe("Configuration Management Integration", function () {
 
       // Should reflect the removal
       AssertionHelpers.assertDiamondsCount(diamondsConfig.diamonds, 1);
-      AssertionHelpers.assertDiamondConfigNotExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.MAIN);
+      AssertionHelpers.assertDiamondConfigNotExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
     });
 
     it("should handle configuration modification at runtime", function () {
-      const initialConfig = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const initialConfig = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(initialConfig);
       diamondsConfig = new DiamondsConfig(hre);
 
       // Get initial config reference
-      const originalConfig = diamondsConfig.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST);
+      const originalConfig = diamondsConfig.getDiamondConfig(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
 
       // Modify the configuration object
       const newConfig = MockFactories.createDiamondPathsConfig();
       hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.TEST] = newConfig;
 
       // Should reflect the new configuration
-      const updatedConfig = diamondsConfig.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST);
+      const updatedConfig = diamondsConfig.getDiamondConfig(
+        TestConstants.DIAMOND_NAMES.TEST
+      );
       expect(updatedConfig).to.equal(newConfig);
       expect(updatedConfig).to.not.equal(originalConfig);
     });
@@ -75,7 +96,9 @@ describe("Configuration Management Integration", function () {
 
   describe("Multi-Instance Consistency", function () {
     it("should maintain consistency across multiple DiamondsConfig instances", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
 
       // Create multiple instances
@@ -83,18 +106,33 @@ describe("Configuration Management Integration", function () {
       const config2 = new DiamondsConfig(hre);
 
       // Both should see the same configuration
-      AssertionHelpers.assertDiamondConfigExists(config1, TestConstants.DIAMOND_NAMES.TEST);
-      AssertionHelpers.assertDiamondConfigExists(config2, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        config1,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        config2,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
 
       // Changes should be reflected in both
-      hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] = MockFactories.createDiamondPathsConfig();
+      hre.config.diamonds.paths[TestConstants.DIAMOND_NAMES.MAIN] =
+        MockFactories.createDiamondPathsConfig();
 
-      AssertionHelpers.assertDiamondConfigExists(config1, TestConstants.DIAMOND_NAMES.MAIN);
-      AssertionHelpers.assertDiamondConfigExists(config2, TestConstants.DIAMOND_NAMES.MAIN);
+      AssertionHelpers.assertDiamondConfigExists(
+        config1,
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        config2,
+        TestConstants.DIAMOND_NAMES.MAIN
+      );
     });
 
     it("should share the same configuration object reference", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
 
       const config1 = new DiamondsConfig(hre);
@@ -110,11 +148,13 @@ describe("Configuration Management Integration", function () {
     it("should handle various valid configuration structures", function () {
       const validConfigs = [
         MockFactories.createEmptyDiamondsConfig(),
-        MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]),
+        MockFactories.createDiamondsPathsConfig([
+          TestConstants.DIAMOND_NAMES.TEST,
+        ]),
         MockFactories.createComplexDiamondsConfig(),
       ];
 
-      validConfigs.forEach((config, index) => {
+      validConfigs.forEach((config) => {
         const hre = TestSetup.createMockHRE(config);
         const diamondsConfig = new DiamondsConfig(hre);
 
@@ -135,15 +175,31 @@ describe("Configuration Management Integration", function () {
       const hre = TestSetup.createMockHRE(specialCharConfig);
       diamondsConfig = new DiamondsConfig(hre);
 
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, "Diamond-With-Dashes");
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, "Diamond_With_Underscores");
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, "Diamond123WithNumbers");
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, "DiamondWithUnicodeΞ");
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        "Diamond-With-Dashes"
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        "Diamond_With_Underscores"
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        "Diamond123WithNumbers"
+      );
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        "DiamondWithUnicodeΞ"
+      );
     });
 
     it("should handle very large configurations", function () {
-      const largeDiamondNames = Array.from({ length: 1000 }, (_, i) => `Diamond${i}`);
-      const largeConfig = MockFactories.createDiamondsPathsConfig(largeDiamondNames);
+      const largeDiamondNames = Array.from(
+        { length: 1000 },
+        (_, i) => `Diamond${i}`
+      );
+      const largeConfig =
+        MockFactories.createDiamondsPathsConfig(largeDiamondNames);
 
       const hre = TestSetup.createMockHRE(largeConfig);
       diamondsConfig = new DiamondsConfig(hre);
@@ -153,15 +209,20 @@ describe("Configuration Management Integration", function () {
 
       // Test random access
       const randomIndexes = [0, 250, 500, 750, 999];
-      randomIndexes.forEach(index => {
-        AssertionHelpers.assertDiamondConfigExists(diamondsConfig, `Diamond${index}`);
+      randomIndexes.forEach((index) => {
+        AssertionHelpers.assertDiamondConfigExists(
+          diamondsConfig,
+          `Diamond${index}`
+        );
       });
     });
   });
 
   describe("Memory Management", function () {
     it("should not cause memory leaks with frequent access", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
       diamondsConfig = new DiamondsConfig(hre);
 
@@ -177,7 +238,9 @@ describe("Configuration Management Integration", function () {
     });
 
     it("should handle rapid configuration changes efficiently", function () {
-      const hre = TestSetup.createMockHRE(MockFactories.createEmptyDiamondsConfig());
+      const hre = TestSetup.createMockHRE(
+        MockFactories.createEmptyDiamondsConfig()
+      );
       diamondsConfig = new DiamondsConfig(hre);
 
       const startTime = Date.now();
@@ -185,7 +248,8 @@ describe("Configuration Management Integration", function () {
       // Rapidly add and remove diamonds
       for (let i = 0; i < 1000; i++) {
         const diamondName = `TempDiamond${i}`;
-        hre.config.diamonds.paths[diamondName] = MockFactories.createDiamondPathsConfig();
+        hre.config.diamonds.paths[diamondName] =
+          MockFactories.createDiamondPathsConfig();
         diamondsConfig.getDiamondConfig(diamondName);
         delete hre.config.diamonds.paths[diamondName];
       }
@@ -199,29 +263,41 @@ describe("Configuration Management Integration", function () {
 
   describe("Error Recovery", function () {
     it("should handle temporary configuration corruption gracefully", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
       diamondsConfig = new DiamondsConfig(hre);
 
       // Initially should work
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
 
       // Temporarily corrupt the configuration
       const originalPaths = hre.config.diamonds.paths;
       (hre.config.diamonds as any).paths = null;
 
       // Should handle the corruption gracefully
-      expect(() => diamondsConfig.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST)).to.throw();
+      expect(() =>
+        diamondsConfig.getDiamondConfig(TestConstants.DIAMOND_NAMES.TEST)
+      ).to.throw();
 
       // Restore configuration
       hre.config.diamonds.paths = originalPaths;
 
       // Should work again
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
     });
 
     it("should provide consistent behavior after errors", function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
       diamondsConfig = new DiamondsConfig(hre);
 
@@ -229,10 +305,14 @@ describe("Configuration Management Integration", function () {
       expect(() => diamondsConfig.getDiamondConfig("NonExistent")).to.throw();
 
       // Should still work for valid diamonds
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
 
       // Add the previously non-existent diamond
-      hre.config.diamonds.paths["NonExistent"] = MockFactories.createDiamondPathsConfig();
+      hre.config.diamonds.paths["NonExistent"] =
+        MockFactories.createDiamondPathsConfig();
 
       // Should now work
       AssertionHelpers.assertDiamondConfigExists(diamondsConfig, "NonExistent");
@@ -241,12 +321,14 @@ describe("Configuration Management Integration", function () {
 
   describe("Concurrent Access", function () {
     it("should handle concurrent configuration access safely", async function () {
-      const config = MockFactories.createDiamondsPathsConfig([TestConstants.DIAMOND_NAMES.TEST]);
+      const config = MockFactories.createDiamondsPathsConfig([
+        TestConstants.DIAMOND_NAMES.TEST,
+      ]);
       const hre = TestSetup.createMockHRE(config);
       diamondsConfig = new DiamondsConfig(hre);
 
       // Simulate concurrent access
-      const promises = Array.from({ length: 100 }, async (_, i) => {
+      const promises = Array.from({ length: 100 }, async () => {
         return new Promise<void>((resolve) => {
           setTimeout(() => {
             try {
@@ -263,11 +345,16 @@ describe("Configuration Management Integration", function () {
       await Promise.all(promises);
 
       // Configuration should still be valid
-      AssertionHelpers.assertDiamondConfigExists(diamondsConfig, TestConstants.DIAMOND_NAMES.TEST);
+      AssertionHelpers.assertDiamondConfigExists(
+        diamondsConfig,
+        TestConstants.DIAMOND_NAMES.TEST
+      );
     });
 
     it("should handle concurrent configuration modifications", async function () {
-      const hre = TestSetup.createMockHRE(MockFactories.createEmptyDiamondsConfig());
+      const hre = TestSetup.createMockHRE(
+        MockFactories.createEmptyDiamondsConfig()
+      );
       diamondsConfig = new DiamondsConfig(hre);
 
       // Simulate concurrent modifications
@@ -275,7 +362,8 @@ describe("Configuration Management Integration", function () {
         return new Promise<void>((resolve) => {
           setTimeout(() => {
             const diamondName = `ConcurrentDiamond${i}`;
-            hre.config.diamonds.paths[diamondName] = MockFactories.createDiamondPathsConfig();
+            hre.config.diamonds.paths[diamondName] =
+              MockFactories.createDiamondPathsConfig();
             try {
               diamondsConfig.getDiamondConfig(diamondName);
             } catch (error) {
@@ -289,7 +377,9 @@ describe("Configuration Management Integration", function () {
       await Promise.all(promises);
 
       // Should have some diamonds configured
-      expect(Object.keys(hre.config.diamonds.paths).length).to.be.greaterThan(0);
+      expect(Object.keys(hre.config.diamonds.paths).length).to.be.greaterThan(
+        0
+      );
     });
   });
 });

@@ -3,10 +3,12 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { TestConstants } from "../../utils/TestConstants";
-import { MockFactories } from "../../utils/MockFactories";
 
 describe.skip("Hardhat Plugin Integration", function () {
-  const fixtureDir = path.join(__dirname, "../../../fixtures/fixture-projects/hardhat-project");
+  const fixtureDir = path.join(
+    __dirname,
+    "../../../fixtures/fixture-projects/hardhat-project"
+  );
   const configPath = path.join(fixtureDir, "hardhat.config.ts");
   const originalConfigPath = path.join(fixtureDir, "hardhat.config.ts.backup");
 
@@ -32,14 +34,13 @@ describe.skip("Hardhat Plugin Integration", function () {
       // Create a test hardhat.config.ts
       const testConfig = `
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomiclabs/hardhat-waffle";
-import "@nomiclabs/hardhat-ethers";
+import "@nomicfoundation/hardhat-toolbox";
 
 // Load the plugin
 import "../../src/index";
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.17",
+  solidity: "0.8.24",
   defaultNetwork: "hardhat",
   diamonds: {
     paths: {
@@ -66,7 +67,9 @@ export default config;
         expect(result).to.be.a("string");
       } catch (error: any) {
         // If there are compilation errors, fail the test with the error output
-        throw new Error(`TypeScript compilation failed: ${error.stdout || error.message}`);
+        throw new Error(
+          `TypeScript compilation failed: ${error.stdout || error.message}`
+        );
       }
     });
 
@@ -76,7 +79,7 @@ export default config;
       // Create a config that uses the types extensively
       const advancedConfig = `
 import { HardhatUserConfig } from "hardhat/config";
-import { DiamondPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondPathsConfig } from "diamonds";
 import "../../src/index";
 
 const diamondConfig: DiamondPathsConfig = {};
@@ -102,7 +105,9 @@ export default config;
           stdio: "pipe",
         });
       } catch (error: any) {
-        throw new Error(`Advanced TypeScript compilation failed: ${error.stdout || error.message}`);
+        throw new Error(
+          `Advanced TypeScript compilation failed: ${error.stdout || error.message}`
+        );
       }
     });
   });
@@ -171,7 +176,9 @@ testConfig();
         expect(result).to.include("DIAMONDS_AVAILABLE:true");
         expect(result).to.include("DIAMOND_CONFIG_RETRIEVED:true");
       } catch (error: any) {
-        throw new Error(`Runtime test failed: ${error.stdout || error.message}`);
+        throw new Error(
+          `Runtime test failed: ${error.stdout || error.message}`
+        );
       } finally {
         // Cleanup
         if (fs.existsSync(scriptPath)) {
@@ -306,12 +313,11 @@ testNoConfig();
 
       const compatConfig = `
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomiclabs/hardhat-waffle";
-import "@nomiclabs/hardhat-ethers";
+import "@nomicfoundation/hardhat-toolbox";
 import "../../src/index";
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.17",
+  solidity: "0.8.24",
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
@@ -335,7 +341,9 @@ export default config;
           stdio: "pipe",
         });
       } catch (error: any) {
-        throw new Error(`Plugin compatibility test failed: ${error.stdout || error.message}`);
+        throw new Error(
+          `Plugin compatibility test failed: ${error.stdout || error.message}`
+        );
       }
     });
 

@@ -1,4 +1,4 @@
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondPathsConfig, DiamondsPathsConfig } from "diamonds";
 /**
  * Factory functions for creating test data and mock objects
  */
@@ -39,4 +39,3 @@ export declare class MockFactories {
         loupe: string;
     };
 }
-//# sourceMappingURL=MockFactories.d.ts.map

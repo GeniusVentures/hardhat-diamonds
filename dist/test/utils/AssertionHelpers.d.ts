@@ -1,5 +1,5 @@
 import { DiamondsConfig } from "../../src/DiamondsConfig";
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondPathsConfig, DiamondsPathsConfig } from "diamonds";
 /**
  * Custom assertion helpers for diamond-specific validations
  */
@@ -53,4 +53,3 @@ export declare class AssertionHelpers {
      */
     static assertValidFunctionSelector(selector: string): void;
 }
-//# sourceMappingURL=AssertionHelpers.d.ts.map

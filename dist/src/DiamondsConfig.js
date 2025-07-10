@@ -5,6 +5,8 @@ exports.DiamondsConfig = void 0;
 //   [key: string]: any; // Add index signature to allow string indexing
 // }
 class DiamondsConfig {
+    hre;
+    diamonds;
     // paths: Record<string, DiamondPathsConfig>;
     constructor(hre) {
         this.hre = hre;
@@ -25,4 +27,3 @@ class DiamondsConfig {
 }
 exports.DiamondsConfig = DiamondsConfig;
 exports.default = DiamondsConfig;
-//# sourceMappingURL=DiamondsConfig.js.map

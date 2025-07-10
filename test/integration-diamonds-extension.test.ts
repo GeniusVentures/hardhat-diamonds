@@ -4,7 +4,10 @@ import fs from "fs";
 import path from "path";
 
 describe.skip("Integration: Hardhat Diamonds Extension", function () {
-  const fixtureDir = path.join(__dirname, "../fixtures/fixture-projects/hardhat-project");
+  const fixtureDir = path.join(
+    __dirname,
+    "../fixtures/fixture-projects/hardhat-project"
+  );
   const configPath = path.join(fixtureDir, "hardhat.config.ts");
   const configFixturePath = path.join(fixtureDir, "hardhat.config.ts.fixture");
   const tsconfigPath = path.join(fixtureDir, "tsconfig.json");
@@ -48,7 +51,13 @@ describe.skip("Integration: Hardhat Diamonds Extension", function () {
 
   it("should not throw type errors in hardhat.config.ts", function () {
     // Run tsc in the fixture project
-    const tscPath = path.join(__dirname, "../../..", "node_modules", ".bin", "tsc");
+    const tscPath = path.join(
+      __dirname,
+      "../../..",
+      "node_modules",
+      ".bin",
+      "tsc"
+    );
     const result = execSync(`${tscPath} --noEmit`, {
       cwd: fixtureDir,
       stdio: "pipe",

@@ -34,8 +34,8 @@ export declare const TestConstants: {
         readonly LONG: 60000;
     };
     readonly PATHS: {
-        readonly FIXTURE_PROJECTS: "./test/fixture-projects";
-        readonly HARDHAT_PROJECT: "./test/fixture-projects/hardhat-project";
+        readonly FIXTURE_PROJECTS: "./fixtures/fixture-projects";
+        readonly HARDHAT_PROJECT: "./fixtures/fixture-projects/hardhat-project";
         readonly MOCK_CONTRACTS: "./test/mocks/contracts";
         readonly TEST_DATA: "./test/data";
     };
@@ -64,4 +64,3 @@ export declare const TestConstants: {
 export type TestAddress = typeof TestConstants.ADDRESSES[keyof typeof TestConstants.ADDRESSES];
 export type TestDiamondName = typeof TestConstants.DIAMOND_NAMES[keyof typeof TestConstants.DIAMOND_NAMES];
 export type TestFunctionSelector = typeof TestConstants.FUNCTION_SELECTORS[keyof typeof TestConstants.FUNCTION_SELECTORS];
-//# sourceMappingURL=TestConstants.d.ts.map

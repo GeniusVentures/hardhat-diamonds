@@ -2,7 +2,7 @@
  * HardhatRuntimeEnvironment class
  */
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondPathsConfig, DiamondsPathsConfig } from "./types/diamonds";
 export declare class DiamondsConfig {
     private hre;
     diamonds: DiamondsPathsConfig;
@@ -14,4 +14,3 @@ export declare class DiamondsConfig {
     getDiamondConfig(diamondName: string): DiamondPathsConfig;
 }
 export default DiamondsConfig;
-//# sourceMappingURL=DiamondsConfig.d.ts.map

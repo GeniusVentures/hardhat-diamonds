@@ -2,7 +2,7 @@
  * HardhatRuntimeEnvironment class
  */
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DiamondPathsConfig, DiamondsPathsConfig } from "@gnus.ai/diamonds";
+import { DiamondPathsConfig, DiamondsPathsConfig } from "./types/diamonds";
 
 // interface DiamondsPathsConfig extends OriginalDiamondsPathsConfig {
 //   [key: string]: any; // Add index signature to allow string indexing
