@@ -26,4 +26,3 @@ class DiamondsConfig {
     }
 }
 exports.DiamondsConfig = DiamondsConfig;
-exports.default = DiamondsConfig;

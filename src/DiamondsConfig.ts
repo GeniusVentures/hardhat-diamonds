@@ -2,7 +2,7 @@
  * HardhatRuntimeEnvironment class
  */
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DiamondPathsConfig, DiamondsPathsConfig } from "./types/diamonds";
+import { DiamondPathsConfig, DiamondsPathsConfig } from "./interfaces";
 
 // interface DiamondsPathsConfig extends OriginalDiamondsPathsConfig {
 //   [key: string]: any; // Add index signature to allow string indexing
@@ -31,5 +31,3 @@ export class DiamondsConfig {
     return config;
   }
 }
-
-export default DiamondsConfig;

@@ -1,7 +1,7 @@
 import { extendConfig, extendEnvironment } from "hardhat/config";
 import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
 import { lazyObject } from "hardhat/plugins";
-import { DiamondsPathsConfig } from "./types/diamonds";
+import { DiamondsPathsConfig } from "./interfaces";
 import { DiamondsConfig } from "./DiamondsConfig";
 import "./type-extensions";
 
@@ -25,4 +25,5 @@ extendEnvironment((hre) => {
   hre.diamonds = lazyObject(() => new DiamondsConfig(hre));
 });
 
-export { default as DiamondsConfig } from "./DiamondsConfig";
+export { DiamondsConfig } from "./DiamondsConfig";
+export * from "./interfaces";

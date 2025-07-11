@@ -1,5 +1,4 @@
-// Type declarations for the diamonds package
-// This is a temporary type declaration file to enable TypeScript compilation
+// Core interfaces for the hardhat-diamonds package
 
 export interface DiamondPathsConfig {
   deploymentsPath?: string;

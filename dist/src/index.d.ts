@@ -1,2 +1,3 @@
 import "./type-extensions";
-export { default as DiamondsConfig } from "./DiamondsConfig";
+export { DiamondsConfig } from "./DiamondsConfig";
+export * from "./interfaces";
