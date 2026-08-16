@@ -9,7 +9,7 @@ import {
   SupportedProvider,
   cutKey,
   impersonateAndFundSigner,
-} from "@diamondslab/diamonds";
+} from "@geniusventures/diamonds";
 import { Signer } from "ethers";
 import type { HardhatRuntimeEnvironment } from "hardhat/types";
 import { join } from "path";

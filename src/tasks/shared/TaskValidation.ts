@@ -411,7 +411,7 @@ export class TaskValidation {
     // Try to resolve from the consuming project's context first
     try {
       const projectRoot = this.hre.config.paths.root;
-      require.resolve("@diamondslab/diamonds", {
+      require.resolve("@geniusventures/diamonds", {
         paths: [projectRoot, process.cwd()],
       });
     } catch {
@@ -419,7 +419,7 @@ export class TaskValidation {
         field: "dependencies",
         message: "diamonds module not found",
         suggestion:
-          "Install the diamonds module: npm install @diamondslab/diamonds",
+          "Install the diamonds module: npm install @geniusventures/diamonds",
       });
     }
 

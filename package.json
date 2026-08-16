@@ -1,6 +1,6 @@
 {
-  "name": "@diamondslab/hardhat-diamonds",
-  "version": "1.1.15",
+  "name": "@geniusventures/hardhat-diamonds",
+  "version": "1.1.15-gv.1",
   "description": "Tools for deploying and interfacing with ERC-2535 Diamond Proxies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -46,12 +46,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DiamondsLab/hardhat-diamonds.git"
+    "url": "git+https://github.com/GeniusVentures/hardhat-diamonds.git"
   },
   "bugs": {
-    "url": "https://github.com/DiamondsLab/hardhat-diamonds/issues"
+    "url": "https://github.com/GeniusVentures/hardhat-diamonds/issues"
   },
-  "homepage": "https://github.com/DiamondsLab/hardhat-diamonds#readme",
+  "homepage": "https://github.com/GeniusVentures/hardhat-diamonds#readme",
   "engines": {
     "node": ">=18",
     "yarn": ">=4"
@@ -80,7 +80,6 @@
     "docs/VERSIONING.md"
   ],
   "devDependencies": {
-    "@diamondslab/diamonds": "^1.0.0",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.8",
     "@nomicfoundation/hardhat-ignition": "^0.15.0",
@@ -112,12 +111,13 @@
     "solidity-coverage": "^0.8.0",
     "ts-node": "^10.9.2",
     "typechain": "^8.3.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "@geniusventures/diamonds": "1.3.2-gv.1"
   },
   "peerDependencies": {
-    "@diamondslab/diamonds": "^1.0.0",
     "ethers": "^6.0.0",
-    "hardhat": "^2.0.0"
+    "hardhat": "^2.0.0",
+    "@geniusventures/diamonds": "1.3.2-gv.1"
   },
   "packageManager": "yarn@4.10.3",
   "dependencies": {

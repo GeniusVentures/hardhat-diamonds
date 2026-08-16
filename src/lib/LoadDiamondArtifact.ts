@@ -1,4 +1,4 @@
-import { Diamond } from "@diamondslab/diamonds";
+import { Diamond } from "@geniusventures/diamonds";
 import type { HardhatEthersProvider } from "@nomicfoundation/hardhat-ethers/internal/hardhat-ethers-provider";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 import { Contract } from "ethers";
